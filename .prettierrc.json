@@ -4,12 +4,5 @@
 	"bracketSpacing": true,
 	"singleQuote": true,
 	"trailingComma": "none",
-	"jsxBracketSameLine": true,
-	"semi": false,
-  "overrides": [
-    {
-      "files": ".prettierrc",
-      "options": { "parser": "json" }
-    }
-  ]
+	"semi": false
 }
