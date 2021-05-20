@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react'
 
-export const isFalsy = (value) => (value === 0 ? false : !value)
+export const isFalsy = (value: any) => (value === 0 ? false : !value)
 
 // 在一个函数里，改变传入的对象本身是不好的
-export const cleanObject = (object) => {
+export const cleanObject = (object: object) => {
   // Object.assign({}, object)
   const result = { ...object }
   Object.keys(result).forEach((key) => {
+    // @ts-ignore
     const value = result[key]
     if (isFalsy(value)) {
+      // @ts-ignore
       delete result[key]
     }
   })
   return result
 }
 
-export const useMount = (callback) => {
+export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback()
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -40,7 +42,7 @@ export const useMount = (callback) => {
 // log() // 发现 timeout#2! 取消之，然后设置timeout#3
 // 所以，log()#3 结束后，就只剩timeout#3在独自等待了
 
-export const useDebounce = (value, delay) => {
+export const useDebounce = (value: any, delay?: number) => {
   const [debouncedValue, setDebouncedValue] = useState(value)
 
   useEffect(() => {
